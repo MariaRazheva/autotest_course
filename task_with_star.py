@@ -35,12 +35,22 @@ def max_division_by_3(num):
 
 
 def make_lst_of_int(num):
+     """
+    получает список цифр числа (по порядку вхождения слева направо)
+    :param num: число
+    :return: список его цифр
+    """
     str_num = str(num)
     lst_num = [int(str_num[i]) for i in range(len(str_num))]
     return lst_num
 
 
 def make_int_of_lst(lst):
+    """
+    Получить одно число из списка цифр (по порядку слева направо)
+    :param lst: список цифр
+    :return: число
+    """
     str_of_lst = ''
     for i in range(len(lst)):
         str_of_lst += str(lst[i])
