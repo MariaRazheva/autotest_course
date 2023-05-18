@@ -1,74 +1,53 @@
-# Задача со ЗВЁЗДОЧКОЙ. Решать НЕ обязательно.
-# Программа получает на вход натуральное число num.
-# Программа должна вывести другое натуральное число, удовлетворяющее условиям:
-# Новое число должно отличаться от данного ровно одной цифрой
-# Новое число должно столько же знаков как исходное
-# Новое число должно делиться на 3
-# Новое число должно быть максимально возможным из всех таких чисел
-# Например (Ввод --> Вывод) :
+# Напишите функцию to_roman, которая преобразуют арабское число (val) в римское (roman_str).
 #
-# 379 --> 879
-# 15 --> 75
-# 4974 --> 7974
+# Современные римские цифры записываются, выражая каждую цифру отдельно,
+# начиная с самой левой цифры и пропуская цифру со значением нуля.
+# Римскими цифрами 1990 отображается: 1000=М, 900=СМ, 90=ХС; в результате MCMXC.
+# 2023 записывается как 2000=MM, 20=XX, 3=III; или MMXXIII.
+# В 1666 используется каждый римский символ в порядке убывания: MDCLXVI.
+#
+# Например (Ввод --> Вывод) :
+# 2008 --> MMVIII
 
-def max_division_by_3(num):
-    """
-    Получить число, максимальное из возможных, удовлетворяющее условиям:
-    1) делимость на 3
-    2) отличие на 1 цифру от входного
-    3) количество цифр как у входного
-    :param num: число
-    :return: число, удовлетворяющее указанным выше условиям
-    """
-    lst_num = make_lst_of_int(num)
-    copy_lst_num = list(lst_num)
-    new_num = 0
-    for i in range(len(lst_num)):
-        for j in range(9, 6, -1):
-            copy_lst_num[i] = j
-            print(copy_lst_num, 'i', i, 'j', j)
-            if (sum(copy_lst_num) % 3 == 0) and (new_num < make_int_of_lst(copy_lst_num)) and (
-                    make_int_of_lst(copy_lst_num) != num):
-                new_num = make_int_of_lst(copy_lst_num)
-            copy_lst_num = list(lst_num)
-    return new_num
+roman_numbers = ['I', 'V', 'X', 'L', 'C', 'D', 'M']
 
 
-def make_lst_of_int(num):
-     """
-    получает список цифр числа (по порядку вхождения слева направо)
-    :param num: число
-    :return: список его цифр
+def to_roman(val):
     """
-    str_num = str(num)
-    lst_num = [int(str_num[i]) for i in range(len(str_num))]
-    return lst_num
-
-
-def make_int_of_lst(lst):
+    Переводит арабское число в римское
+    :param val: число
+    :return: строка, соответствующая римской записи входного числа
     """
-    Получить одно число из списка цифр (по порядку слева направо)
-    :param lst: список цифр
-    :return: число
-    """
-    str_of_lst = ''
-    for i in range(len(lst)):
-        str_of_lst += str(lst[i])
-    # print(int(str_of_lst))
-    return int(str_of_lst)
+    # Здесь нужно написать код
+    str_val = str(val)
+    list_val = []
+    str_val_revers = str_val[::-1]
+    roman_str_revers = ''
+    for i in range(len(str_val)):
+        list_val.append(int(str_val_revers[i]))
+    for k in range(len(list_val)):
+        j = k + 1
+        if list_val[k] > 0 and list_val[k] < 4:
+            roman_str_revers += list_val[k] * roman_numbers[2 * j - 2]
+        if list_val[k] == 4:
+            roman_str_revers += (roman_numbers[2 * j - 1] + roman_numbers[2 * j - 2])
+        if list_val[k] > 4 and list_val[k] < 9:
+            roman_str_revers += ((list_val[k] - 5) * roman_numbers[2 * j - 2] + roman_numbers[2 * j - 1])
+        if list_val[k] == 9:
+            roman_str_revers += (roman_numbers[2 * j]) + roman_numbers[2 * j - 2]
+        roman_str = roman_str_revers[::-1]
+    return roman_str
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
-data = [
-    379, 810, 981, 4974, 996, 9000, 15, 0, 9881, 9984, 9876543210, 98795432109879543210
-]
+data = [1133, 2224, 1938, 1817, 2505, 391, 3743, 1634, 699, 1666, 1494, 1444]
 
 test_data = [
-    879, 870, 987, 7974, 999, 9900, 75, 9, 9981, 9987, 9879543210, 98798432109879543210
-]
+    "MCXXXIII", "MMCCXXIV", "MCMXXXVIII", "MDCCCXVII", "MMDV", "CCCXCI", 'MMMDCCXLIII', 'MDCXXXIV', 'DCXCIX', 'MDCLXVI',
+    'MCDXCIV', 'MCDXLIV']
 
 for i, d in enumerate(data):
-    assert max_division_by_3(d) == test_data[i], f'С набором {d} есть ошибка, не проходит проверку'
+    assert to_roman(d) == test_data[i], f'С набором {d} есть ошибка, не проходит проверку'
     print(f'Тестовый набор {d} прошёл проверку')
 print('Всё ок')
