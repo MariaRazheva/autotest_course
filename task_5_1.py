@@ -15,11 +15,7 @@ def letter_stat(our_str):
     letters_set = set()
     letters_dict = {}
     for i in range(len(our_str)):
-        if our_str[i] in letters_set:
-            letters_dict[our_str[i]] += 1
-        else:
-            letters_dict[our_str[i]] = 1
-            letters_set.add(our_str[i])
+        letters_dict[our_str[i]]=our_str.count(our_str[i])    
     return letters_dict
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
