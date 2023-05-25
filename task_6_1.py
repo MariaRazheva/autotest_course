@@ -12,6 +12,10 @@ string = 'Hello'
 
 
 def global_changes():
+    """
+    изменяет и возвращает значения глобальных переменных number на 5, string на 'Hello, dear friend'
+    :return: переменные number и string
+    """
     global number
     number = 5
     global string
