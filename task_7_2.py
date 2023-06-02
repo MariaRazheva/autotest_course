@@ -67,14 +67,13 @@ class PersonInfo:
         new_dict = letter_stat(path)
         new_list = []
         counter = 0
-        while counter < 3:
+        for counter in range(3):
             max_val = max(new_dict.values())
             for key in new_dict.keys():
                 if new_dict[key] == max_val:
                     key_to_delete = key
             new_list.append(max_val)
             new_dict.pop(key_to_delete)
-            counter += 1
         koeff_letters = new_list[0] + new_list[1] + new_list[2]
         return 1337 * self.age * koeff_letters
 
