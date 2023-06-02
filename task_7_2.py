@@ -42,17 +42,31 @@ def letter_stat(our_str):
 class PersonInfo:
 
     def __init__(self, name, age, *args):
+            """
+        Инициализирует объект полученными данными - имя, возраст, подразделения
+        :param name: строка с именем сотрудника
+        :param age: число - возраст сотрудника
+        :param args: подразделения, в которых состоит сотрудник от заглавного до конечного
+        """
         self.name = name
         self.age = age
         self.way = args
 
     def short_name(self):
+            """
+        Возвращает строку формата "Фамилия И." данного сотрудника
+        :return: строка "Фамилия И."
+        """
         name = self.name.split()[1];
         surname_first_letter = self.name.split()[0][0]
         string_short_name = name + ' ' + surname_first_letter + '.'
         return string_short_name
 
     def path_deps(self):
+            """
+        Возвращает строку пути от головного до конечного подразделения с разделителем ' --> '
+        :return: строка пути
+        """
         path = ""
         for i in range(len(self.way)):
             path += self.way[i]
@@ -61,6 +75,10 @@ class PersonInfo:
         return path
 
     def new_salary(self):
+            """
+        Возвращает будущую зарплату посчитанную как произведение 1337, возраста и количества вхождений трех самых часто встречающихся букв в подразделениях сотрудника 
+        :return: число - зарплата, посчитанная по описанной формуле
+        """
         path = ""
         for i in range(len(self.way)):
             path += self.way[i]
