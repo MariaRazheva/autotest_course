@@ -19,6 +19,11 @@ import unittest  # Не удалять
 # Здесь пишем код
 class Trigon:
     def __init__(self, *args):
+        """
+        Инициализирует треугольник по величинам трех сторон, возвращает исключение с текстом ошибки, если полученные
+         данные некорректны
+        :param args: три числовых значения - длины сторон
+        """
         self.sides = args
         if len(self.sides) < 3:
             raise IndexError('Передано 2 аргументов, а ожидается 3')
@@ -26,7 +31,6 @@ class Trigon:
             raise IndexError('Передано 4 аргументов, а ожидается 3')
         if not isinstance(self.sides[1], int) or not isinstance(self.sides[1], int) or not isinstance(self.sides[2],
                                                                                                       int):
-            # or not int(self.sides[1]) or not int(self.sides[2])
             raise TypeError('Стороны должны быть числами')
         if not self.sides[0] > 0 or not self.sides[1] > 0 or not self.sides[2] > 0:
             raise ValueError('Стороны должны быть положительными')
