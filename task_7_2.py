@@ -32,7 +32,6 @@ def letter_stat(our_str):
     letters_dict = {}
     for i in range(len(our_str)):
         if our_str[i] in letters_set:
-
             letters_dict[our_str[i]] += 1
         else:
             letters_dict[our_str[i]] = 1
@@ -70,26 +69,17 @@ class PersonInfo:
         counter = 0
         while counter < 3:
             max_val = max(new_dict.values())
-
             for key in new_dict.keys():
                 if new_dict[key] == max_val:
                     key_to_delete = key
             new_list.append(max_val)
             new_dict.pop(key_to_delete)
-            print(new_dict)
             counter += 1
-        print(new_list[0], new_list[1], new_list[2])
         koeff_letters = new_list[0] + new_list[1] + new_list[2]
-        print(koeff_letters)
-        print(1337 * self.age * koeff_letters)
         return 1337 * self.age * koeff_letters
 
 
-# def path_for_salary(self):
-#        path = ""
-#        for i in range(len(self.way)):
-#           path += self.way[i]
-#        return path
+
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
