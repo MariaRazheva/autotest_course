@@ -13,19 +13,36 @@
 
 class Segment:
     def __init__(self, point_1, point_2):
+        """
+        Инициализирует объект (отрезок) двумя полученными точками
+        :param point_1: кортеж, состоящий из двух координат первой точки
+        :param point_2: кортеж, состоящий из двух координат второй точки
+        """      
         self.point_1 = point_1
         self.point_2 = point_2
 
     def length(self):
+        """
+        Возвращает длину отрезка
+        :return: длина данного отрезка
+        """
         length = ((self.point_1[0] - self.point_2[0]) ** 2 + (self.point_1[1] - self.point_2[1]) ** 2) ** 0.5
         return round(length, 2)
 
     def x_axis_intersection(self):
+        """
+        Возвращает True, если отрезок пересекает ось X, иначе False
+        :return: True, если есть пересечение, False иначе
+        """
         if self.point_1[0] * self.point_2[0] > 0:
             return False
         return True
 
     def y_axis_intersection(self):
+          """
+        Возвращает True, если отрезок пересекает ось Y, иначе False
+        :return: True, если есть пересечение, False иначе
+        """
         if self.point_1[1] * self.point_2[1] > 0:
             return False
         return True
