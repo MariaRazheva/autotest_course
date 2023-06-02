@@ -28,6 +28,14 @@
 class PublicTransport:
 
     def __init__(self, brand, engine_power, year, color, max_speed):
+            """
+        Инициализирует объект (вид транспорта) полученными параметрами
+        :param brand: строка - марка вида транспорта
+        :param engine_power: число - мощность двигателя транспорта
+        :param year: число - год выпуска транспорта
+        :param color: строка - цвет транспорта
+        :param max_speed: число - максимальная скорость транспорта
+        """
         self.brand = brand
         self._engine_power = engine_power
         self.year = year
@@ -36,12 +44,26 @@ class PublicTransport:
 
     @property
     def info(self):
+        """
+        Выводит на экран информацию о марке, цвете, годе выпуска и мощности двигателя
+        """
         print(self.brand, self.color, self.year, self._engine_power)
 
 
 class Bus(PublicTransport):
 
     def __init__(self, brand, engine_power, year, color, max_speed, passengers, park, fare):
+         """
+        Инициализирует объект (автобус) полученными параметрами
+        :param brand: строка - марка вида транспорта
+        :param engine_power: число - мощность двигателя транспорта
+        :param year: число - год выпуска транспорта
+        :param color: строка - цвет транспорта
+        :param max_speed: число - максимальная скорость транспорта
+        :param passengers: число - количество пассажиров
+        :param park: число - номер парка от 1000 до 9999
+        :param fare: число - стоимость проезда
+        """
         super().__init__(brand, engine_power, year, color, max_speed)
         self.passengers = passengers
         self.__park = park
@@ -50,10 +72,19 @@ class Bus(PublicTransport):
 
     @property
     def park(self):
+            """
+        возвращает номер парка данного автобуса
+        :return: номер парка
+        """
         return self.park
 
     @park.setter
     def park(self, new_park):
+        """
+        Проверяет корректность полученного номера парка и заменяет на него номер парка 
+        :param new_park: новый номер парка
+        :return: исключение, если номер не корректен, иначе ничего
+        """
         assert (new_park > 999) and (new_park < 10000)
         self.__park = new_park
 
@@ -61,14 +92,28 @@ class Bus(PublicTransport):
 class Tram(PublicTransport):
 
     def __init__(self, brand, engine_power, year, color, max_speed, route, path, fare):
+        """
+        Инициализирует объект (трамвай) полученными параметрами
+        :param brand: строка - марка вида транспорта
+        :param engine_power: число - мощность двигателя транспорта
+        :param year: число - год выпуска транспорта
+        :param color: строка - цвет транспорта
+        :param max_speed: число - максимальная скорость транспорта
+        :param route: число - номер маршрута трамвая
+        :param path: число - длина маршрута трамвая
+        :param fare: число - стоимость проезда
+        """
         super().__init__(brand, engine_power, year, color, max_speed)
-
         self.__route = route
         self.path = path
         self._fare = fare
 
     @property
     def how_long(self):
+        """
+        возвращает время прохождения маршрута, вычисленное по формуле макс.скор./4 длины маршрута
+        :return: число - время прохождения маршрута
+        """
         return self.max_speed / (4 * self.path)
 
 
