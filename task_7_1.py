@@ -23,14 +23,12 @@ class Segment:
     def x_axis_intersection(self):
         if self.point_1[0] * self.point_2[0] > 0:
             return False
-        else:
-            return True
+        return True
 
     def y_axis_intersection(self):
         if self.point_1[1] * self.point_2[1] > 0:
             return False
-        else:
-            return True
+        return True
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
