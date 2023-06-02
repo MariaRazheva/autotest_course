@@ -19,14 +19,18 @@ import unittest  # Не удалять
 # Здесь пишем код
 
 def treatment_sum(our_tuple):
+    """
+    возвращает сумму двух чисел кортежа, выбрасывает исключение с текстом ошибки, если данные нельзя сложить или в
+     кортеже неверное количество данных
+    :param our_tuple: кортеж, состоящий из двух чисел
+    :return: сумма чисел, если полученные параметры корректны, иначе исключение с текстом
+    """
     try:
         sum = our_tuple[0] + our_tuple[1]
     except IndexError:
         return 'Недостаточно данных'
     except TypeError:
         return 'Нельзя сложить эти данные'
-    # except Exception:
-    #    return 'Много данных'
     assert len(our_tuple) == 2, 'Много данных'
     return sum
 
