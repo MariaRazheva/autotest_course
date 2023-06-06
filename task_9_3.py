@@ -14,9 +14,8 @@ def sum_max_three():
             i += 1
             list_sums.append(0)
         else:
-            list_sums[i] += int(list_purchases[j][:len(list_purchases[j])-2:])
+            list_sums[i] += int(list_purchases[j][:len(list_purchases[j])-1:])
     sum = 0
-
     for i in range(3):
         max_purchase = max(list_sums)
         sum += max_purchase
