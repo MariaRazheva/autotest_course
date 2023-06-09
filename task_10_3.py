@@ -5,7 +5,7 @@
 import pytest
 
 
-@pytest.mark.parametrize('in_data, out', [((1, 1), 1), ((1, 0), pytest.raises(ZeroDivisionError)), ((0, 1), 0), ((1, -1, -1), 1), ((256, 2, 2, 2), 32)])
+@pytest.mark.parametrize('in_data, out', [pytest.param((1, 1), 1, marks=pytest.mark.skip), ((1, 0), pytest.raises(ZeroDivisionError)), pytest.param((0, 1), 0, marks=pytest.mark.smoke), ((1, -1, -1), 1), ((256, 2, 2, 2), 32)])
 def test_all_division(in_data, out):
     if not pytest.raises(ZeroDivisionError):
         assert all_division(*in_data) == out
