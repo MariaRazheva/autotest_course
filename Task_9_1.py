@@ -2,16 +2,17 @@
 # Он содержит текст, в словах которого есть цифры.
 # Необходимо удалить все цифры и записать получившийся текст в файл test_file/task1_answer.txt
 
-set_numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+import re
 # Здесь пишем код
 def delete_number():
+    """
+    удаляет все символы-цифры из входного файла и записывает полученный текст в другой файл
+    """
     f = open("test_file/task1_data.txt", 'r', encoding='utf-8')
     new_f = open("test_file/task1_answer.txt", 'w', encoding='utf-8')
     list_of_str = f.readlines()
     for i in range(len(list_of_str)):
-        for j in range(len(list_of_str[i])):
-            if not list_of_str[i][j] in set_numbers:
-                new_f.write(list_of_str[i][j])
+        new_f.write(re.sub("[0-9]", "", list_of_str[i]))
 
 
 delete_number()
