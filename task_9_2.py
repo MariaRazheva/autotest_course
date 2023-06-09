@@ -37,34 +37,36 @@ import time
 
 
 def func_log(func):
+    """
+    записывает в файл информацию о времени вызова функции
+    :param func: функция, о которой нужно записать инф.
+    """
     def wrapper(file_log="log.txt"):
         print('wrapper')
         func()
         dt = datetime.datetime.now()
         f = open(file_log, 'a', encoding='utf-8')
-        f.write(func.__name__)
-        f.write(' вызвана ')
-        f.write(dt.strftime("%d"))
-        f.write('.')
-        f.write(dt.strftime("%m"))
-        f.write(' ')
-        f.write(dt.strftime("%H"))
-        f.write(':')
-        f.write(dt.strftime("%M"))
-        f.write(':')
-        f.write(dt.strftime("%S"))
-        f.write('\n')
+        str_one = func.__name__+' '+'вызвана'+' '+dt.strftime("%d")+'.'+dt.strftime("%m")+' '+dt.strftime("%H")+':'\
+                + dt.strftime("%M")+':'+dt.strftime("%S")+'\n'
+        f.write(str_one)
     return wrapper
 @func_log
 def func1():
+    """
+    выполняет 3-секундную задержку
+    """
     time.sleep(3)
-    print("lf")
+
 
 
 @func_log
 def func2():
+    """
+    выполняет 5-секундную задержку
+    :return:
+    """
     time.sleep(5)
-    print('ytr')
+
 
 
 func1()
