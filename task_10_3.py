@@ -12,10 +12,7 @@ def test_all_division(in_data, out):
 
 
 
-#def test2():
-    # #assert all_division(1, 0) == ZeroDivisionError
-    # with pytest.raises(ZeroDivisionError):
-    #     all_division(1, 0)
+
 
 
 def all_division(*arg1):
